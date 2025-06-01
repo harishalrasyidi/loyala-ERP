@@ -1,9 +1,9 @@
 # custom_modules/loyala_project/__manifest__.py
 {
-    'name': 'Loyala Project',
-    'version': '1.0',
-    'summary': 'Feasibility Check untuk Project',
-    'description': 'Aplikasi untuk melakukan feasibility check pada project',
+    'name': 'Check Harga',
+    'version': '2.0',
+    'summary': 'Check Harga dan Feasibility Project',
+    'description': 'Aplikasi untuk melakukan check harga dan feasibility check pada project',
     'author': 'Loyala',
     'website': '',
     'category': 'Project',
@@ -11,6 +11,8 @@
     'depends': [
         'sale_management',  # quotation & order
         'mrp',              # BOM & scheduling
+        'stock',            # inventory management
+        'product',          # product management
     ],
     'data': [
         'security/ir.model.access.csv',

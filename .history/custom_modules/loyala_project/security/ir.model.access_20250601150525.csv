@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_price_estimation,product.price.estimation,model_product_price_estimation,,1,1,1,1
+access_product_price_estimation_line,product.price.estimation.line,model_product_price_estimation_line,,1,1,1,1

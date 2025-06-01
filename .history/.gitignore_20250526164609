@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Odoo
+custom_modules/backend_theme/
+
+# Docker
+# docker-compose.yml
+# Dockerfile
+
+# OS
+.DS_Store
+Thumbs.db 
+
+DB-pass_admin.txt

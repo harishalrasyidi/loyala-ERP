@@ -15,3 +15,6 @@ custom_modules/backend_theme/
 Thumbs.db 
 
 DB-pass_admin.txt
+.history
+odoo.conf
+etc/odoo-server.log

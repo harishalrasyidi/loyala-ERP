@@ -13,3 +13,5 @@ custom_modules/backend_theme/
 # OS
 .DS_Store
 Thumbs.db 
+
+DB-pass_admin.txt

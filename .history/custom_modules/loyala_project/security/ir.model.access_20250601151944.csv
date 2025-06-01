@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loyala_project_request,loyala.project.request,model_loyala_project_request,,1,1,1,1
+access_loyala_project_request_line,loyala.project.request.line,model_loyala_project_request_line,,1,1,1,1

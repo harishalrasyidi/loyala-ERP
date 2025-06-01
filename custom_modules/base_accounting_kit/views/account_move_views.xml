@@ -19,13 +19,35 @@
                 <field string="Asset Category" name="asset_category_id"
                        invisible="1"/>
             </xpath>
-            <!-- Add Invoice Photo field for vendor bills -->
+            <!-- Add Invoice Photo field with preview for vendor bills -->
             <xpath expr="//group[@id='header_right_group']" position="inside">
                 <field name="invoice_photo" 
                        widget="image"
                        class="oe_avatar"
-                       options="{'size': [120, 120]}"
+                       options="{
+                           'size': [120, 120],
+                           'preview_image': 'invoice_photo',
+                           'zoom': true,
+                           'zoom_delay': 300
+                       }"
                        invisible="move_type != 'in_invoice'"/>
+            </xpath>
+            <!-- Add larger preview in a new notebook page -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Invoice Photo" invisible="move_type != 'in_invoice'">
+                    <group>
+                        <field name="invoice_photo" 
+                               widget="image"
+                               class="oe_image"
+                               options="{
+                                   'size': [800, 600],
+                                   'preview_image': 'invoice_photo',
+                                   'zoom': true,
+                                   'zoom_delay': 300
+                               }"
+                               nolabel="1"/>
+                    </group>
+                </page>
             </xpath>
         </field>
     </record>

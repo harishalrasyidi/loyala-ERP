@@ -19,5 +19,11 @@ Thumbs.db
 .history
 
 DB-pass_admin.txt
+<<<<<<< HEAD
 loyalaDB*
 .history
+=======
+.history
+odoo.conf
+etc/odoo-server.log
+>>>>>>> 5e49ac198aaee42b927460e11af7cbe92fbc7235

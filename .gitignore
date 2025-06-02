@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+/etc/odoo.conf
+etc/
+
 # Odoo
 custom_modules/backend_theme/
 
@@ -13,8 +16,16 @@ custom_modules/backend_theme/
 # OS
 .DS_Store
 Thumbs.db 
+.history
 
 DB-pass_admin.txt
 .history
 odoo.conf
 etc/odoo-server.log
+
+custom_modules/code_backend_theme/
+loyalaDB_2025-06-01_07-09-08.zip
+loyalaDB_2025-06-01_07-09-08/
+loyalaDB_2025-06-01_08-53-56.zip
+loyalaDB_2025-06-01_08-53-56/
+loyalaDB_2025-06-02_02-49-38.dump

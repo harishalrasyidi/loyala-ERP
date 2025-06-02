@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loyala_project_request,loyala.project.request,model_loyala_project_request,base.group_user,1,1,1,1
+access_loyala_project_request_line,loyala.project.request.line,model_loyala_project_request_line,base.group_user,1,1,1,1
+access_loyala_create_quotasi,loyala.create.quotasi,model_loyala_create_quotasi,base.group_user,1,1,1,1
+access_sale_order_user,sale.order.access,sale.model_sale_order,base.group_user,1,1,1,0
+access_sale_order_user,sale.order.access,sale.model_sale_order,base.group_user,1,1,1,0

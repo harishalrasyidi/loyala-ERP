@@ -19,11 +19,13 @@ Thumbs.db
 .history
 
 DB-pass_admin.txt
-<<<<<<< HEAD
-loyalaDB*
-.history
-=======
 .history
 odoo.conf
 etc/odoo-server.log
->>>>>>> 5e49ac198aaee42b927460e11af7cbe92fbc7235
+
+custom_modules/code_backend_theme/
+loyalaDB_2025-06-01_07-09-08.zip
+loyalaDB_2025-06-01_07-09-08/
+loyalaDB_2025-06-01_08-53-56.zip
+loyalaDB_2025-06-01_08-53-56/
+loyalaDB_2025-06-02_02-49-38.dump

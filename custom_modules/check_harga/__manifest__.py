@@ -30,6 +30,6 @@
     'application': True,
     'auto_install': False,
     'license': 'LGPL-3',
-    'icon': 'loyala_project/static/description/icon.png',
+    'icon': '../check_harga/static/description/icon.png',
     'tags': ['project', 'custom', 'feasibility'],
 }

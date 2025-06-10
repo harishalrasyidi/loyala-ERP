@@ -8,7 +8,7 @@ class LoyalaProjectRequest(models.Model):
     partner_id = fields.Many2one('res.partner', string='Partner')
     date_deadline = fields.Date(string='Deadline')
     bom_id = fields.Many2one('mrp.bom', string='Bill of Materials', required=True)
-    product_qty = fields.Float(string='Product Quantity', default=1.0)
+    product_qty = fields.Float(string='Product Quantity', default=20.0, help='Jumlah Produk yang Diminta Minimal 1 Kodi')
     component_line_ids = fields.One2many('loyala.project.request.line', 'request_id', string='Components')
     hpp_unit = fields.Float(string='HPP Produk', compute='_compute_costs', store=True, readonly=True)
     var_cost = fields.Float(string='Variable Cost', compute='_compute_costs', store=True, readonly=True)
@@ -44,18 +44,45 @@ class LoyalaProjectRequest(models.Model):
                 }))
             self.component_line_ids = lines
 
+    # @api.onchange('bom_id')
+    # def _onchange_bom_id_per_product(self):
+    #     if self.bom_id:
+    #         # Populate component lines from BOM
+    #         lines = [(5, 0, 0)]  # Clear existing lines
+    #         for bom_line in self.bom_id.bom_line_ids:
+    #             lines.append((0, 0, {
+    #                 'component_id': bom_line.product_id.id,
+    #                 'quantity': bom_line.product_qty * self.product_qty,
+    #                 'price': bom_line.product_id.standard_price,
+    #             }))
+    #         self.component_line_ids = lines
+
     @api.depends('component_line_ids.subtotal')
     def _compute_costs(self):
         for request in self:
             if request.component_line_ids:
                 total_cost = sum(line.subtotal for line in request.component_line_ids)
                 request.hpp_unit = total_cost / request.product_qty if request.product_qty else 0.0
-                request.var_cost = request.hpp_unit * request.product_qty * 1.1  # 10% overhead
-                request.sample_cost = request.hpp_unit * 2.0  # Double unit cost for sample
+                request.var_cost = request.hpp_unit * 1.1  # 10% overhead
+                request.sample_cost = request.hpp_unit * 2.0  if request.hpp_unit > 500000 else 500000# Double unit cost for sample
             else:
                 request.hpp_unit = 0.0
                 request.var_cost = 0.0
                 request.sample_cost = 0.0
+
+    
+
+    @api.constrains('product_qty')
+    def _check_product_qty(self):
+        for rec in self:
+            if rec.product_qty < 20:
+                raise ValueError("Pemesanan Minimal 1 Kodi atau 20 Produk.")
+
+    @api.constrains('margin_pct')
+    def _check_margin_pct(self):
+        for rec in self:
+            if rec.margin_pct < 10.0:
+                raise ValueError("Margin (%) tidak bisa kurang dari 10%.")
 
     @api.depends('hpp_unit', 'var_cost', 'margin_pct')
     def _compute_harga_jual(self):

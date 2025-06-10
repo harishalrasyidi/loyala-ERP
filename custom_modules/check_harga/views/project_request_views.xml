@@ -44,11 +44,14 @@
                   <field name="subtotal" readonly="1"/>
                 </tree>
               </field>
+              <group>
+                <field name="total_cost" readonly="1"/>                
+              </group>
             </page>
           </notebook>
           <notebook>
             <page string="Komponen Per Produk">
-              <field name="component_line_ids">
+              <field name="component_line_ids_per_product">
                 <tree editable="bottom">
                   <field name="component_id"/>
                   <field name="quantity"/>
@@ -56,6 +59,9 @@
                   <field name="subtotal" readonly="1"/>
                 </tree>
               </field>
+              <group>
+                  <field name="total_cost_per_product" readonly="1"/>
+              </group>
             </page>
           </notebook>
           <group>
@@ -93,17 +99,18 @@
     <field name="model">loyala.create.quotasi</field>
     <field name="arch" type="xml">
       <form>
-          <button name="action_create_quotasi"
-                  type="object"
-                  string="Buat Quotasi"
-                  class="btn-primary"
-                  invisible="quotasi_id"/>
         <sheet>
           <group>
             <field name="request_id"/>
             <field name="quotasi_id" readonly="1"/>
           </group>
         </sheet>
+            <button name="action_create_quotasi"
+                    type="object"
+                    string="Buat Quotasi"
+                    class="btn-primary"
+                    invisible="quotasi_id"
+            />
       </form>
     </field>
   </record>

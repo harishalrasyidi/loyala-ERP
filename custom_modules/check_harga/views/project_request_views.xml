@@ -35,7 +35,19 @@
             <field name="max_overlap"/>
           </group>
           <notebook>
-            <page string="Components">
+            <page string="Komponen Untuk Keseluruhan Proyek">
+              <field name="component_line_ids">
+                <tree editable="bottom">
+                  <field name="component_id"/>
+                  <field name="quantity"/>
+                  <field name="price" readonly="1"/>
+                  <field name="subtotal" readonly="1"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+          <notebook>
+            <page string="Komponen Per Produk">
               <field name="component_line_ids">
                 <tree editable="bottom">
                   <field name="component_id"/>
@@ -67,7 +79,7 @@
           <div class="oe_button_box" name="button_box">
             <button type="action"
                     name="%(action_create_quotasi)d"
-                    string="Create Quotasi"
+                    string="Buat Quotasi"
                     class="oe_stat_button"
                     icon="fa-file-invoice"/>
           </div>

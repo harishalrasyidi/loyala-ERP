@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_monitoring_operasional_inherit" model="ir.ui.view">
+        <field name="name">mrp.production.form.inherit</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="project_id"/>
+                <field name="stock_quantity" readonly="1"/>
+                <field name="custom_state"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_mrp_stock_report_tree" model="ir.ui.view">
+        <field name="name">mrp.stock.report.tree</field>
+        <field name="model">mrp.stock.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Referensi"/>
+                <field name="production_id" string="Manufacturing Order"/>
+                <field name="product_id" string="Produk"/>
+                <field name="project_id" string="Proyek"/>
+                <field name="custom_state" string="Manufacturing Stage"/>
+                <field name="stock_quantity" string="Jumlah Stok" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mrp_stock_report_form" model="ir.ui.view">
+        <field name="name">mrp.stock.report.form</field>
+        <field name="model">mrp.stock.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="production_id"/>
+                        <field name="product_id"/>
+                        <field name="project_id"/>
+                        <field name="custom_state"/>
+                        <field name="stock_quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mrp_stock_report_search" model="ir.ui.view">
+        <field name="name">mrp.stock.report.search</field>
+        <field name="model">mrp.stock.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="production_id"/>
+                <field name="product_id"/>
+                <field name="project_id"/>
+                <field name="custom_state"/>
+                <filter string="Low Stock" name="low_stock" domain="[('stock_quantity', '&lt;', 10)]"/>
+                <filter string="Trimming" name="trimming" domain="[('custom_state', '=', 'trimming')]"/>
+                <filter string="Sewing" name="sewing" domain="[('custom_state', '=', 'sewing')]"/>
+                <filter string="Bordir/Paint" name="bordir_paint" domain="[('custom_state', '=', 'bordir_paint')]"/>
+                <filter string="Finishing" name="finishing" domain="[('custom_state', '=', 'finishing')]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_mrp_stock_report" model="ir.actions.act_window">
+        <field name="name">Monitoring Operasional</field>
+        <field name="res_model">mrp.stock.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('production_id.state', 'not in', ['done', 'cancel'])]</field>
+    </record>
+
+    <menuitem id="menu_mrp_stock_report"
+              name="Monitoring Operasional"
+              action="action_mrp_stock_report"
+              groups="base.group_user"
+              sequence="10"/>
+</odoo>
